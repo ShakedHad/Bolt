@@ -6,12 +6,7 @@ namespace Clean.Architecture.Web.Controllers
     {
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
+            return Redirect("index.html");
         }
     }
 }
