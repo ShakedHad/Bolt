@@ -6,7 +6,7 @@ namespace Bolt.Web.Controllers
     {
         public IActionResult Index()
         {
-            return Redirect("index.html");
+            return Redirect("public/index.html");
         }
     }
 }
