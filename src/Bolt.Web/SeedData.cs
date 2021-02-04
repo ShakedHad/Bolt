@@ -11,15 +11,15 @@ namespace Bolt.Web
 {
     public static class SeedData
     {
-        public static Dictionary<DayOfWeek, OpeningHours> OpenningHours = new()
+        public static Dictionary<DayOfWeek, (LocalTime,LocalTime)> OpenningHours = new()
         {
-            {DayOfWeek.Sunday, new OpeningHours{OpenTime = new LocalTime(11,00), CloseTime = new LocalTime(23, 00)}},
-            {DayOfWeek.Monday, new OpeningHours{OpenTime = new LocalTime(11,00), CloseTime = new LocalTime(23, 00)}},
-            {DayOfWeek.Tuesday, new OpeningHours{OpenTime = new LocalTime(11,00), CloseTime = new LocalTime(23, 00)}},
-            {DayOfWeek.Wednesday, new OpeningHours{OpenTime = new LocalTime(11,00), CloseTime = new LocalTime(23, 00)}},
-            {DayOfWeek.Thursday, new OpeningHours{OpenTime = new LocalTime(11,00), CloseTime = new LocalTime(23, 00)}},
-            {DayOfWeek.Friday, new OpeningHours{OpenTime = new LocalTime(11,00), CloseTime = new LocalTime(23, 00)}},
-            {DayOfWeek.Saturday, new OpeningHours{OpenTime = new LocalTime(11,00), CloseTime = new LocalTime(23, 00)}}
+            { DayOfWeek.Sunday, (new LocalTime(11, 00), new LocalTime(23, 00))},
+            { DayOfWeek.Monday, (new LocalTime(11, 00), new LocalTime(23, 00))},
+            { DayOfWeek.Tuesday, (new LocalTime(11, 00), new LocalTime(23, 00))},
+            { DayOfWeek.Wednesday, (new LocalTime(11, 00), new LocalTime(23, 00))},
+            { DayOfWeek.Thursday, (new LocalTime(11, 00), new LocalTime(23, 00))},
+            { DayOfWeek.Friday, (new LocalTime(11, 00), new LocalTime(23, 00))},
+            { DayOfWeek.Saturday, (new LocalTime(11, 00), new LocalTime(23, 00))}
         };
 
         public static User SeedUser = new()

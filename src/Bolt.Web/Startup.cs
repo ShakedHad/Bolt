@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
+using NodaTime;
+using NodaTime.Serialization.JsonNet;
 
 namespace Bolt.Web
 {
@@ -33,10 +36,9 @@ namespace Bolt.Web
 
 			string connectionString = Configuration.GetConnectionString("PGConnectionString");  //Configuration.GetConnectionString("DefaultConnection");
 
-
 			services.AddDbContext(connectionString);
 
-			services.AddControllers();
+			services.AddControllers().AddNewtonsoftJson(o => o.SerializerSettings.ConfigureForNodaTime(DateTimeZoneProviders.Tzdb));
 
 			services.AddSwaggerGen(c => {
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
