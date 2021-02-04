@@ -23,7 +23,8 @@ namespace Bolt.Infrastructure.Data
             _mediator = mediator;
         }
 
-        public DbSet<ToDoItem> ToDoItems { get; set; }
+        public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
