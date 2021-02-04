@@ -11,7 +11,7 @@ namespace Bolt.Web
 {
     public static class SeedData
     {
-        public static Dictionary<DayOfWeek, (LocalTime,LocalTime)> OpenningHours = new()
+        public static Dictionary<DayOfWeek, (LocalTime,LocalTime)> OpeningHours = new()
         {
             { DayOfWeek.Sunday, (new LocalTime(11, 00), new LocalTime(23, 00))},
             { DayOfWeek.Monday, (new LocalTime(11, 00), new LocalTime(23, 00))},
@@ -37,7 +37,7 @@ namespace Bolt.Web
                 Address = "Even Gvirol 37, Tel Aviv",
                 DeliveryRadius = 5.0M,
                 IsOpenedForOrders = true,
-                OpeningHours = OpenningHours,
+                OpeningHours = OpeningHours,
                 PhoneNumber = "0524481484",
                 Category = RestaurantCategory.Burger,
                 Website = "https://m.facebook.com/vitrinush/",
@@ -51,7 +51,7 @@ namespace Bolt.Web
                 Address = "Menahem Begin 21, Tel Aviv",
                 DeliveryRadius = 5.0M,
                 IsOpenedForOrders = true,
-                OpeningHours = OpenningHours,
+                OpeningHours = OpeningHours,
                 PhoneNumber = "0524481484",
                 Category = RestaurantCategory.Italian,
                 Website = "http://www.magazzino.co.il/",
@@ -66,7 +66,7 @@ namespace Bolt.Web
                 Address = "Bugrashov 7 tlv",
                 DeliveryRadius = 5.0M,
                 IsOpenedForOrders = true,
-                OpeningHours = OpenningHours,
+                OpeningHours = OpeningHours,
                 PhoneNumber = "0524481484",
                 Category = RestaurantCategory.Mexican,
                 Website = "https://mexicana.co.il/",
@@ -80,10 +80,7 @@ namespace Bolt.Web
         {
             using var dbContext = new AppDbContext(
                 serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>(), null);
-            if (dbContext.Restaurants.Any())
-            {
-                return;   // DB has been seeded
-            }
+            if (dbContext.Restaurants.Any()) return;   // DB has been seeded
 
             PopulateTestData(dbContext);
         }
