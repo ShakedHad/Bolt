@@ -17,7 +17,7 @@ namespace Bolt.Web.Api
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            return Ok((await _repository.ListAsync<Restaurant>());
+            return Ok((await _repository.ListAsync<Restaurant>()));
         }
     }
 }

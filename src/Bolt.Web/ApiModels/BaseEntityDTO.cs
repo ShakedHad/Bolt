@@ -1,6 +1,8 @@
 ﻿namespace Bolt.Web.ApiModels
 {
-    public class BaseEntityDto
+    public class BaseEntityDTO
     {
+        public int Id { get; set; }
+
     }
 }
