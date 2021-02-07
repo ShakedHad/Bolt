@@ -1,6 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
 using Bolt.Core.Entities;
 using Bolt.SharedKernel.Interfaces;
+using Bolt.Web.ApiModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bolt.Web.Api
@@ -8,16 +11,19 @@ namespace Bolt.Web.Api
     public class RestaurantsController : BaseApiController
     {
         private readonly IRepository _repository;
+        private readonly IMapper _mapper;
 
-        public RestaurantsController(IRepository repository)
+        public RestaurantsController(IRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            return Ok((await _repository.ListAsync<Restaurant>()));
+            var items = _mapper.Map<List<Restaurant>, List<RestaurantDTO>>(await _repository.ListAsync<Restaurant>());
+            return Ok(items);
         }
     }
 }

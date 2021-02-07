@@ -2,6 +2,7 @@
 using Ardalis.ListStartupServices;
 using Autofac;
 using Bolt.Infrastructure;
+using Bolt.Web.ApiModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,8 +38,8 @@ namespace Bolt.Web
 			string connectionString = Configuration.GetConnectionString("PGConnectionString");  //Configuration.GetConnectionString("DefaultConnection");
 
 			services.AddDbContext(connectionString);
-
 			services.AddControllers().AddNewtonsoftJson(o => o.SerializerSettings.ConfigureForNodaTime(DateTimeZoneProviders.Tzdb));
+            services.AddAutoMapper(typeof(MappingConfiguration));
 
 			services.AddSwaggerGen(c => {
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
