@@ -1,4 +1,5 @@
-﻿namespace Bolt.Web.ApiModels
+﻿
+namespace Bolt.Web.ApiModels
 {
     public class UserDTO : BaseEntityDTO
     {

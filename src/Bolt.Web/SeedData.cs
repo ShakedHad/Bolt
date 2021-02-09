@@ -33,7 +33,7 @@ namespace Bolt.Web
             new Restaurant
             {
                 Name = "Vitrina",
-                Description = "Bust Burger in TLV",
+                Description = "Best Burger in TLV",
                 Address = "Even Gvirol 37, Tel Aviv",
                 DeliveryRadius = 5.0M,
                 IsOpenedForOrders = true,
@@ -58,6 +58,48 @@ namespace Bolt.Web
                 Owner = SeedUser,
                 ImageUrl = "https://prod-wolt-venue-images-cdn.wolt.com/5e67a04b68bac592829ab56f/4726b500-564e-11eb-af6c-6e39c82040f7_list_with_badge.jpg"
 
+            },
+            new Restaurant
+            {
+                Name = "Mexicana",
+                Description = "‫Feels Like Mexico",
+                Address = "Bugrashov 7 tlv",
+                DeliveryRadius = 5.0M,
+                IsOpenedForOrders = true,
+                OpeningHours = OpeningHours,
+                PhoneNumber = "0524481484",
+                Category = RestaurantCategory.Mexican,
+                Website = "https://mexicana.co.il/",
+                Owner = SeedUser,
+                ImageUrl = "https://prod-wolt-venue-images-cdn.wolt.com/5e6e424301f4c5cee1feab65/5a8e55da-2331-11eb-9fbb-ba4017ca3fe5_img_5155.jpg"
+            },
+            new Restaurant
+            {
+                Name = "Mexicana",
+                Description = "‫Feels Like Mexico",
+                Address = "Bugrashov 7 tlv",
+                DeliveryRadius = 5.0M,
+                IsOpenedForOrders = true,
+                OpeningHours = OpeningHours,
+                PhoneNumber = "0524481484",
+                Category = RestaurantCategory.Mexican,
+                Website = "https://mexicana.co.il/",
+                Owner = SeedUser,
+                ImageUrl = "https://prod-wolt-venue-images-cdn.wolt.com/5e6e424301f4c5cee1feab65/5a8e55da-2331-11eb-9fbb-ba4017ca3fe5_img_5155.jpg"
+            },
+            new Restaurant
+            {
+                Name = "Mexicana",
+                Description = "‫Feels Like Mexico",
+                Address = "Bugrashov 7 tlv",
+                DeliveryRadius = 5.0M,
+                IsOpenedForOrders = true,
+                OpeningHours = OpeningHours,
+                PhoneNumber = "0524481484",
+                Category = RestaurantCategory.Mexican,
+                Website = "https://mexicana.co.il/",
+                Owner = SeedUser,
+                ImageUrl = "https://prod-wolt-venue-images-cdn.wolt.com/5e6e424301f4c5cee1feab65/5a8e55da-2331-11eb-9fbb-ba4017ca3fe5_img_5155.jpg"
             },
             new Restaurant
             {
