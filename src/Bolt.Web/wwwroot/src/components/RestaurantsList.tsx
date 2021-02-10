@@ -1,4 +1,6 @@
-import { Card, Col, Row } from 'antd';
+import {
+  Card, Col, Row, Spin,
+} from 'antd';
 import { plainToClass } from 'class-transformer';
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,18 +25,23 @@ const RestaurantsList: FC = () => {
       }]}
       >
         {
-        restaurants?.map((restaurant: Restaurant) => (
-          <Col sm={12} md={8} lg={6} xl={4} key={restaurant.id}>
-            <Card
-              hoverable
-              cover={
-                <img src={restaurant.imageUrl} alt="cover" />
+
+        !restaurants || !restaurants.length
+          ? (
+            <Spin tip="Loading..." style={{ margin: 'auto' }} />
+          )
+          : (restaurants.map((restaurant: Restaurant) => (
+            <Col sm={12} md={8} lg={6} xl={4} key={restaurant.id}>
+              <Card
+                hoverable
+                cover={
+                  <img src={restaurant.imageUrl} alt="cover" />
             }
-            >
-              <Meta description={restaurant.description} title={restaurant.name} />
-            </Card>
-          </Col>
-        ))
+              >
+                <Meta description={restaurant.description} title={restaurant.name} />
+              </Card>
+            </Col>
+          )))
       }
       </Row>
     </div>
