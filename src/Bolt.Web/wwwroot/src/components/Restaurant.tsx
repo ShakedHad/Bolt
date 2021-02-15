@@ -4,10 +4,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  Col, Row, Typography,
+  Col, Row, Spin, Typography,
 } from 'antd';
-import _ from 'lodash';
-import React, { FC, useEffect } from 'react';
+import _, { rest } from 'lodash';
+import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
@@ -30,22 +30,31 @@ const ThinMarginParagraph = styled(Paragraph)`
   margin-bottom: 0.5em
 `;
 
+const CenteredSpinner = styled(Spin)`
+  margin: auto;
+  width: 100%
+`;
+
 const Restaurant : FC = () => {
-  const { id } = useParams<ParamTypes>();
+  const id = parseInt(useParams<ParamTypes>().id ?? '0', 10);
   const dispatch = useDispatch();
   const restaurant = useSelector((state : StoreState) => state.selectedRestaurant);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!id) return;
-    dispatch(FetchSelectedRestaurant(+id));
+    dispatch(FetchSelectedRestaurant(id));
   }, []);
-  console.log(restaurant?.openingHours);
+
+  useEffect(() => {
+    if (restaurant?.id === id) setLoading(false);
+  }, [restaurant]);
 
   return (
     <div>
       {
-        !restaurant
-          ? <div>loading</div>
+        loading
+          ? <CenteredSpinner tip="Just a minute..." />
           : (
             <>
               <Row>
@@ -66,7 +75,7 @@ const Restaurant : FC = () => {
                   <Typography>
                     <ThinMarginParagraph>
                       <MarginIcon icon={faUtensils} />
-                      {RestaurantCategory[restaurant?.category]}
+                      {RestaurantCategory[restaurant!.category]}
                     </ThinMarginParagraph>
                     <ThinMarginParagraph>
                       <MarginIcon icon={faMapMarkerAlt} />
