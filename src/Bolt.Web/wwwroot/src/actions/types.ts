@@ -1,8 +1,10 @@
-import { FetchRestaurantsAction } from './Restaurants';
+import { FetchRestaurantsAction, FetchSelectedRestaurantAction } from './Restaurants';
 
 // eslint-disable-next-line no-shadow
 export enum ActionsTypes {
-  FetchRestaurants
+  FetchRestaurants,
+  FetchSelectedRestaurant
 }
 
-export type Action = FetchRestaurantsAction;
+export type RestaurantsAction = FetchRestaurantsAction;
+export type SelectedRestaurantAction = FetchSelectedRestaurantAction;

@@ -1,11 +1,17 @@
 import axios from 'axios';
+import { plainToClass } from 'class-transformer';
 import { Dispatch } from 'redux';
 import { ActionsTypes } from '.';
-import { Restaurant } from '../models/Restaturant';
+import { Restaurant } from '../models/Restaurant';
 
 export interface FetchRestaurantsAction {
   type: ActionsTypes.FetchRestaurants,
   payload: Restaurant[];
+}
+
+export interface FetchSelectedRestaurantAction {
+  type: ActionsTypes.FetchSelectedRestaurant,
+  payload: Restaurant;
 }
 
 export const FetchRestaurants = () => async (dispatch: Dispatch) => {
@@ -13,6 +19,15 @@ export const FetchRestaurants = () => async (dispatch: Dispatch) => {
 
   dispatch<FetchRestaurantsAction>({
     type: ActionsTypes.FetchRestaurants,
-    payload: data,
+    payload: plainToClass(Restaurant, data),
+  });
+};
+
+export const FetchSelectedRestaurant = (id: number) => async (dispatch: Dispatch) => {
+  const { data } = await axios.get<Restaurant>(`/api/restaurants/${id}`);
+
+  dispatch<FetchSelectedRestaurantAction>({
+    type: ActionsTypes.FetchSelectedRestaurant,
+    payload: plainToClass(Restaurant, data),
   });
 };

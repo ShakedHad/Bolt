@@ -25,5 +25,13 @@ namespace Bolt.Web.Api
             var items = _mapper.Map<List<Restaurant>, List<RestaurantDTO>>(await _repository.ListAsync<Restaurant>());
             return Ok(items);
         }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var item = _mapper.Map<Restaurant, RestaurantDTO>(await _repository.GetByIdAsync<Restaurant>(id));
+            if (item is null) return NotFound();
+            return Ok(item);
+        }
     }
 }
