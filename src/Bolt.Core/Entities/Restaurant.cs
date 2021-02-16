@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Reflection.Metadata;
 using System.Reflection.Metadata.Ecma335;
 using Bolt.SharedKernel;
@@ -21,7 +22,8 @@ namespace Bolt.Core.Entities
         public RestaurantCategory Category { get; set; }
         public User Owner  { get; set; }
         public string ImageUrl { get; set; }
-        
+        public Menu Menu { get; set; }
+
 
         public Restaurant()
         {
