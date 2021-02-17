@@ -18,5 +18,6 @@ namespace Bolt.Web.ApiModels
         public RestaurantCategory Category { get; set; }
         public UserDTO Owner { get; set; }
         public string ImageUrl { get; set; }
+        public MenuDTO Menu { get; set; }
     }
 }

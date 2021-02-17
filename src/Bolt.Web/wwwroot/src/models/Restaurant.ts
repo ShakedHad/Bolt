@@ -4,9 +4,10 @@ import { DateTime } from 'luxon';
 import { DayOfWeek } from './DayOfWeek';
 import { RestaurantCategory } from './RestaurantCategory';
 import { User } from './User';
+import { BaseEntity } from './BaseEntity';
 import 'reflect-metadata';
 
-export class Restaurant {
+export class Restaurant extends BaseEntity {
   @Transform(
     ({ value } : {value: {DayOfWeek: {item1: string, item2: string}}}) => (
       _.mapValues(value, (hours) => {
@@ -25,8 +26,6 @@ export class Restaurant {
     [DayOfWeek.Saturday]: [DateTime.local(), DateTime.local()],
   };
 
-  id: number = 0;
-
   name: string = '';
 
   description: string = '';
@@ -43,10 +42,11 @@ export class Restaurant {
 
   imageUrl: string = '';
 
-  owner: User = { firstName: '', lastName: '' };
+  owner: User = new User();
 
   category: RestaurantCategory = RestaurantCategory.Burger;
 
   constructor() {
+    super();
   }
 }

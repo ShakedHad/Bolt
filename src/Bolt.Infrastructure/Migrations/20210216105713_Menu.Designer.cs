@@ -3,15 +3,17 @@ using System;
 using Bolt.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Bolt.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210216105713_Menu")]
+    partial class Menu
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,7 +69,7 @@ namespace Bolt.Infrastructure.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Description")
@@ -76,12 +78,17 @@ namespace Bolt.Infrastructure.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("text");
 
+                    b.Property<int>("MenuId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("MenuId");
 
                     b.ToTable("MenuItem");
                 });
@@ -187,7 +194,7 @@ namespace Bolt.Infrastructure.Migrations
             modelBuilder.Entity("Bolt.Core.Entities.MenuCategory", b =>
                 {
                     b.HasOne("Bolt.Core.Entities.Menu", "Menu")
-                        .WithMany("Categories")
+                        .WithMany()
                         .HasForeignKey("MenuId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -198,12 +205,18 @@ namespace Bolt.Infrastructure.Migrations
             modelBuilder.Entity("Bolt.Core.Entities.MenuItem", b =>
                 {
                     b.HasOne("Bolt.Core.Entities.MenuCategory", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("Bolt.Core.Entities.Menu", "Menu")
                         .WithMany("Items")
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("MenuId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
+
+                    b.Navigation("Menu");
                 });
 
             modelBuilder.Entity("Bolt.Core.Entities.Restaurant", b =>
@@ -216,11 +229,6 @@ namespace Bolt.Infrastructure.Migrations
                 });
 
             modelBuilder.Entity("Bolt.Core.Entities.Menu", b =>
-                {
-                    b.Navigation("Categories");
-                });
-
-            modelBuilder.Entity("Bolt.Core.Entities.MenuCategory", b =>
                 {
                     b.Navigation("Items");
                 });

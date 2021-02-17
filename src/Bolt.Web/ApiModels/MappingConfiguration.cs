@@ -9,6 +9,9 @@ namespace Bolt.Web.ApiModels
         {
             CreateMap<Restaurant, RestaurantDTO>();
             CreateMap<User, UserDTO>();
+            CreateMap<Menu, MenuDTO>();
+            CreateMap<MenuCategory, MenuCategoryDTO>();
+            CreateMap<MenuItem, MenuItemDTO>();
         }
     }
 }

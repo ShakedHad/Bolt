@@ -14,6 +14,7 @@ import styled from 'styled-components';
 import { FetchSelectedRestaurant } from '../actions';
 import { RestaurantCategory } from '../models/RestaurantCategory';
 import { StoreState } from '../reducers';
+import Menu from './Menu';
 
 interface ParamTypes {
   id?: string;
@@ -40,6 +41,7 @@ const Restaurant : FC = () => {
   const dispatch = useDispatch();
   const restaurant = useSelector((state : StoreState) => state.selectedRestaurant);
   const [loading, setLoading] = useState(true);
+  console.log(restaurant);
 
   useEffect(() => {
     if (!id) return;
@@ -103,7 +105,7 @@ const Restaurant : FC = () => {
                   </Typography>
                 </Col>
                 <Col>
-                  menu
+                  <Menu />
                 </Col>
               </Row>
             </>

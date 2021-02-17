@@ -11,15 +11,15 @@ namespace Bolt.Web
 {
     public static class SeedData
     {
-        public static Dictionary<DayOfWeek, (LocalTime,LocalTime)> OpeningHours = new()
+        public static Dictionary<DayOfWeek, (LocalTime, LocalTime)> OpeningHours = new()
         {
-            { DayOfWeek.Sunday, (new LocalTime(11, 00), new LocalTime(23, 00))},
-            { DayOfWeek.Monday, (new LocalTime(11, 00), new LocalTime(23, 00))},
-            { DayOfWeek.Tuesday, (new LocalTime(11, 00), new LocalTime(23, 00))},
-            { DayOfWeek.Wednesday, (new LocalTime(11, 00), new LocalTime(23, 00))},
-            { DayOfWeek.Thursday, (new LocalTime(11, 00), new LocalTime(23, 00))},
-            { DayOfWeek.Friday, (new LocalTime(11, 00), new LocalTime(23, 00))},
-            { DayOfWeek.Saturday, (new LocalTime(11, 00), new LocalTime(23, 00))}
+            { DayOfWeek.Sunday, (new LocalTime(11, 00), new LocalTime(23, 00)) },
+            { DayOfWeek.Monday, (new LocalTime(11, 00), new LocalTime(23, 00)) },
+            { DayOfWeek.Tuesday, (new LocalTime(11, 00), new LocalTime(23, 00)) },
+            { DayOfWeek.Wednesday, (new LocalTime(11, 00), new LocalTime(23, 00)) },
+            { DayOfWeek.Thursday, (new LocalTime(11, 00), new LocalTime(23, 00)) },
+            { DayOfWeek.Friday, (new LocalTime(11, 00), new LocalTime(23, 00)) },
+            { DayOfWeek.Saturday, (new LocalTime(11, 00), new LocalTime(23, 00)) }
         };
 
         public static User SeedUser = new()
@@ -42,7 +42,51 @@ namespace Bolt.Web
                 Category = RestaurantCategory.Burger,
                 Website = "https://m.facebook.com/vitrinush/",
                 Owner = SeedUser,
-                ImageUrl = "https://prod-wolt-venue-images-cdn.wolt.com/5ea6a9dd38feff70cd020ce0/a0a6eb72-501d-11eb-b115-4e507104f923__________________.jpg"
+                ImageUrl = "https://prod-wolt-venue-images-cdn.wolt.com/5ea6a9dd38feff70cd020ce0/428141d0-66d1-11eb-a0f5-2a74384763cb_bonfis_0019.jpg",
+                Menu = new Menu
+                {
+                    Categories = new List<MenuCategory>()
+                    {
+                        new()
+                        {
+                            Name = "Burgers",
+                            Description = "Yummmmmm",
+                            Items = new List<MenuItem>()
+                            {
+                                new () {
+                                    Name = "Hamburger",
+                                    Description = "Meat patty between two hamburger bans",
+                                    ImageUrl = "https://wolt-menu-images-cdn.wolt.com/menu-images/5bf421d392c43d000adeeb61/b1f6e9d6-66c0-11eb-aa64-e6936f25bfdc_img_0023__1_.jpeg",
+                                },
+                                new()
+                                {
+                                    Name = "Cheeseburger",
+                                    Description = "Meat patty between two hamburger bans, With Cheese!",
+                                    ImageUrl = "https://wolt-menu-images-cdn.wolt.com/menu-images/5bf421d392c43d000adeeb61/a4982d86-66bb-11eb-b97b-f623dcdc9c93_butler_cheeseburger.jpeg",
+                                }
+                            }
+                        },
+                        new()
+                        {
+                            Name = "Fries",
+                            Description = "That lemon zest!",
+                            Items = new List<MenuItem>()
+                            {
+                                new () {
+                                    Name = "Mix Fries",
+                                    Description = "Potato and sweet potato mixed together",
+                                    ImageUrl = "https://wolt-menu-images-cdn.wolt.com/menu-images/5bf421d392c43d000adeeb61/378f67c4-66be-11eb-aed4-8eaab0637613___________.jpeg",
+                                },
+                                new()
+                                {
+                                    Name = "Potato Fries",
+                                    Description = "Meat patty between two hamburger bans, With Cheese!",
+                                    ImageUrl = "https://wolt-menu-images-cdn.wolt.com/menu-images/5bf421d392c43d000adeeb61/3d94b3c2-66be-11eb-b4eb-5aac908d13ff________________.jpeg",
+                                }
+                            }
+                        },
+                    }
+                }
             },
             new Restaurant
             {
@@ -56,7 +100,7 @@ namespace Bolt.Web
                 Category = RestaurantCategory.Italian,
                 Website = "http://www.magazzino.co.il/",
                 Owner = SeedUser,
-                ImageUrl = "https://prod-wolt-venue-images-cdn.wolt.com/5e67a04b68bac592829ab56f/4726b500-564e-11eb-af6c-6e39c82040f7_list_with_badge.jpg"
+                ImageUrl = "https://prod-wolt-venue-images-cdn.wolt.com/5e67a04b68bac592829ab56f/3131828e-564e-11eb-b4c6-f29e99c7ffcf_img_9052.jpg"
 
             },
             new Restaurant

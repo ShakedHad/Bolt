@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Bolt.Core.Entities;
+using Bolt.Core.Specifications;
 using Bolt.SharedKernel.Interfaces;
 using Bolt.Web.ApiModels;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +31,7 @@ namespace Bolt.Web.Api
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var item = _mapper.Map<Restaurant, RestaurantDTO>(await _repository.GetByIdAsync<Restaurant>(id));
+            var item = _mapper.Map<Restaurant, RestaurantDTO>((await _repository.ListAsync(new RestaurantWithMenuByIdSpecification(id))).Single());
             if (item is null) return NotFound();
             return Ok(item);
         }
