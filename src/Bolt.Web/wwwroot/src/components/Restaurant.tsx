@@ -104,8 +104,8 @@ const Restaurant : FC = () => {
                     </ThinMarginParagraph>
                   </Typography>
                 </Col>
-                <Col>
-                  <Menu />
+                <Col xxl={18} xl={18} md={18} sm={20} xs={20}>
+                  <Menu restaurant={restaurant!} />
                 </Col>
               </Row>
             </>

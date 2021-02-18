@@ -6,6 +6,7 @@ import { RestaurantCategory } from './RestaurantCategory';
 import { User } from './User';
 import { BaseEntity } from './BaseEntity';
 import 'reflect-metadata';
+import { Menu } from './Menu';
 
 export class Restaurant extends BaseEntity {
   @Transform(
@@ -45,6 +46,8 @@ export class Restaurant extends BaseEntity {
   owner: User = new User();
 
   category: RestaurantCategory = RestaurantCategory.Burger;
+
+  menu: Menu = new Menu();
 
   constructor() {
     super();

@@ -36,19 +36,21 @@ const RestaurantsList: FC = () => {
           ? (
             <Spin tip="Just a minute..." style={{ margin: 'auto' }} />
           )
-          : (restaurants.map((restaurant: Restaurant) => (
-            <Col sm={12} md={8} lg={6} xl={4} key={restaurant.id}>
-              <Card
-                hoverable
-                cover={
-                  <img src={restaurant.imageUrl} alt="cover" />
+          : (
+            restaurants.map((restaurant: Restaurant) => (
+              <Col sm={12} md={8} lg={6} xl={4} key={restaurant.id}>
+                <Card
+                  hoverable
+                  cover={
+                    <img src={restaurant.imageUrl} alt="cover" />
                 }
-                onClick={() => onRestaurantClick(restaurant.id)}
-              >
-                <Meta description={restaurant.description} title={restaurant.name} />
-              </Card>
-            </Col>
-          )))
+                  onClick={() => onRestaurantClick(restaurant.id)}
+                >
+                  <Meta description={restaurant.description} title={restaurant.name} />
+                </Card>
+              </Col>
+            ))
+          )
       }
       </Row>
     </div>

@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import { BaseEntity } from './BaseEntity';
 import { MenuItem } from './MenuItem';
 
@@ -6,5 +7,6 @@ export class MenuCategory extends BaseEntity {
 
   description: string = '';
 
+  @Type(() => MenuItem)
   items: MenuItem[] = [];
 }
