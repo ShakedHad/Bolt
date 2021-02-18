@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Ardalis.Specification;
@@ -18,12 +19,12 @@ namespace Bolt.Infrastructure.Data
             _dbContext = dbContext;
         }
 
-        public T GetById<T>(int id) where T : BaseEntity, IAggregateRoot
+        public T GetById<T>(Guid id) where T : BaseEntity, IAggregateRoot
         {
             return _dbContext.Set<T>().SingleOrDefault(e => e.Id == id);
         }
 
-        public Task<T> GetByIdAsync<T>(int id) where T : BaseEntity, IAggregateRoot
+        public Task<T> GetByIdAsync<T>(Guid id) where T : BaseEntity, IAggregateRoot
         {
             return _dbContext.Set<T>().SingleOrDefaultAsync(e => e.Id == id);
         }

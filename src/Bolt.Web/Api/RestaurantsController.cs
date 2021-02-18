@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -28,8 +29,8 @@ namespace Bolt.Web.Api
             return Ok(items);
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetById(int id)
+        [HttpGet("{id:guid}")]
+        public async Task<IActionResult> GetById(Guid id)
         {
             var item = _mapper.Map<Restaurant, RestaurantDTO>((await _repository.ListAsync(new RestaurantWithMenuByIdSpecification(id))).Single());
             if (item is null) return NotFound();

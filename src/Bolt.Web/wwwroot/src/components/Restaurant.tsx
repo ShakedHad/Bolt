@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   Col, Row, Spin, Typography,
 } from 'antd';
+import { Guid } from 'guid-typescript';
 import _, { rest } from 'lodash';
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -37,7 +38,7 @@ const CenteredSpinner = styled(Spin)`
 `;
 
 const Restaurant : FC = () => {
-  const id = parseInt(useParams<ParamTypes>().id ?? '0', 10);
+  const id = Guid.parse(useParams<ParamTypes>().id ?? '');
   const dispatch = useDispatch();
   const restaurant = useSelector((state : StoreState) => state.selectedRestaurant);
   const [loading, setLoading] = useState(true);
@@ -49,7 +50,8 @@ const Restaurant : FC = () => {
   }, []);
 
   useEffect(() => {
-    if (restaurant?.id === id) setLoading(false);
+    debugger;
+    if (restaurant?.id.equals(id)) setLoading(false);
   }, [restaurant]);
 
   return (

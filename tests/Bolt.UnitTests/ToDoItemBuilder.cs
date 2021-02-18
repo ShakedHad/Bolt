@@ -10,7 +10,7 @@ namespace Bolt.UnitTests
 
         public ToDoItemBuilder Id(int id)
         {
-            _todo.Id = id;
+            //_todo.Id = id;
             return this;
         }
 
@@ -28,7 +28,7 @@ namespace Bolt.UnitTests
 
         public ToDoItemBuilder WithDefaultValues()
         {
-            _todo = new ToDoItem() { Id = 1, Title = "Test Item", Description = "Test Description" };
+            //_todo = new ToDoItem() { Id = 1, Title = "Test Item", Description = "Test Description" };
 
             return this;
         }

@@ -1,6 +1,7 @@
 import {
   Card, Col, Row, Spin,
 } from 'antd';
+import { Guid } from 'guid-typescript';
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -19,7 +20,7 @@ const RestaurantsList: FC = () => {
     dispatch(FetchRestaurants());
   }, []);
 
-  const onRestaurantClick = (id : number) => {
+  const onRestaurantClick = (id : Guid) => {
     history.push(`/restaurant/${id}`);
   };
 
@@ -38,7 +39,7 @@ const RestaurantsList: FC = () => {
           )
           : (
             restaurants.map((restaurant: Restaurant) => (
-              <Col sm={12} md={8} lg={6} xl={4} key={restaurant.id}>
+              <Col sm={12} md={8} lg={6} xl={4} key={restaurant.id.toString()}>
                 <Card
                   hoverable
                   cover={

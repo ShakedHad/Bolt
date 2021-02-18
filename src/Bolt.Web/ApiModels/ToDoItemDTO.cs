@@ -16,7 +16,7 @@ namespace Bolt.Web.ApiModels
         {
             return new ToDoItemDTO()
             {
-                Id = item.Id,
+                //Id = item.Id,
                 Title = item.Title,
                 Description = item.Description,
                 IsDone = item.IsDone

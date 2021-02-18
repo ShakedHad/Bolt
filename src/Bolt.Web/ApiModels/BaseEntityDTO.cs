@@ -1,8 +1,10 @@
-﻿namespace Bolt.Web.ApiModels
+﻿using System;
+
+namespace Bolt.Web.ApiModels
 {
     public class BaseEntityDTO
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
     }
 }

@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Bolt.Core\Bolt.Core.csproj" />
     <ProjectReference Include="..\Bolt.SharedKernel\Bolt.SharedKernel.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
 </Project>

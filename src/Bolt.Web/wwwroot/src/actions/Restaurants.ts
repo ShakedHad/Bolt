@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { plainToClass } from 'class-transformer';
+import { Guid } from 'guid-typescript';
 import { Dispatch } from 'redux';
 import { ActionsTypes } from '.';
 import { Restaurant } from '../models/Restaurant';
@@ -23,7 +24,7 @@ export const FetchRestaurants = () => async (dispatch: Dispatch) => {
   });
 };
 
-export const FetchSelectedRestaurant = (id: number) => async (dispatch: Dispatch) => {
+export const FetchSelectedRestaurant = (id: Guid) => async (dispatch: Dispatch) => {
   const { data } = await axios.get<Restaurant>(`/api/restaurants/${id}`);
 
   dispatch<FetchSelectedRestaurantAction>({

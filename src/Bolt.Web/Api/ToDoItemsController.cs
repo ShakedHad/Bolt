@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Bolt.Core.Entities;
 using Bolt.SharedKernel.Interfaces;
@@ -26,7 +27,7 @@ namespace Bolt.Web.Api
 
         // GET: api/ToDoItems
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             var item =  ToDoItemDTO.FromToDoItem(await _repository.GetByIdAsync<ToDoItem>(id));
             return Ok(item);
@@ -46,7 +47,7 @@ namespace Bolt.Web.Api
         }
 
         [HttpPatch("{id:int}/complete")]
-        public async Task<IActionResult> Complete(int id)
+        public async Task<IActionResult> Complete(Guid id)
         {
             var toDoItem = await _repository.GetByIdAsync<ToDoItem>(id);
             toDoItem.MarkComplete();

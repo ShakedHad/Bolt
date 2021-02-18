@@ -1,4 +1,5 @@
-﻿using Bolt.SharedKernel;
+﻿using System;
+using Bolt.SharedKernel;
 
 namespace Bolt.Core.Entities
 {
@@ -7,7 +8,7 @@ namespace Bolt.Core.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
         public MenuCategory Category { get; set; }
     }
 }

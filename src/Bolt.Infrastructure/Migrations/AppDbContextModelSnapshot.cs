@@ -21,13 +21,12 @@ namespace Bolt.Infrastructure.Migrations
 
             modelBuilder.Entity("Bolt.Core.Entities.Menu", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("RestaurantId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("RestaurantId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -39,16 +38,15 @@ namespace Bolt.Infrastructure.Migrations
 
             modelBuilder.Entity("Bolt.Core.Entities.MenuCategory", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<int>("MenuId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("MenuId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -62,13 +60,12 @@ namespace Bolt.Infrastructure.Migrations
 
             modelBuilder.Entity("Bolt.Core.Entities.MenuItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -88,10 +85,9 @@ namespace Bolt.Infrastructure.Migrations
 
             modelBuilder.Entity("Bolt.Core.Entities.Restaurant", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Address")
                         .HasColumnType("text");
@@ -117,8 +113,8 @@ namespace Bolt.Infrastructure.Migrations
                     b.Property<string>("OpeningHours")
                         .HasColumnType("text");
 
-                    b.Property<int?>("OwnerId")
-                        .HasColumnType("integer");
+                    b.Property<Guid?>("OwnerId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("text");
@@ -135,10 +131,9 @@ namespace Bolt.Infrastructure.Migrations
 
             modelBuilder.Entity("Bolt.Core.Entities.ToDoItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -157,10 +152,9 @@ namespace Bolt.Infrastructure.Migrations
 
             modelBuilder.Entity("Bolt.Core.Entities.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("text");
