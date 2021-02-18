@@ -26,7 +26,7 @@ const App: FC = () => {
               <Menu.Item key="3">nav 3</Menu.Item>
             </Menu>
           </Header>
-          <Content style={{ padding: '25px 50px', height: '100vh' }}>
+          <Content style={{ padding: '25px 50px', minHeight: 'calc(100vh - 64px)' }}>
             <Switch>
               <Route path="/restaurant/:id">
                 <Restaurant />

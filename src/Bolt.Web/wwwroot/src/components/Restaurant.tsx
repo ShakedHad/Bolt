@@ -50,7 +50,6 @@ const Restaurant : FC = () => {
   }, []);
 
   useEffect(() => {
-    debugger;
     if (restaurant?.id.equals(id)) setLoading(false);
   }, [restaurant]);
 
