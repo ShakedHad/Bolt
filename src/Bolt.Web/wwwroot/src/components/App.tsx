@@ -22,8 +22,6 @@ const App: FC = () => {
             <img className="logo" src="/logo_transparent.png" alt="logo" />
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
               <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
-              <Menu.Item key="2">nav 2</Menu.Item>
-              <Menu.Item key="3">nav 3</Menu.Item>
             </Menu>
           </Header>
           <Content style={{ padding: '25px 50px', minHeight: 'calc(100vh - 64px)' }}>

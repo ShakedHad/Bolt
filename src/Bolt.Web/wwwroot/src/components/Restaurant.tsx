@@ -86,7 +86,7 @@ const Restaurant : FC = () => {
                     </ThinMarginParagraph>
                     <ThinMarginParagraph>
                       <MarginIcon icon={faPhoneAlt} />
-                      {restaurant?.phoneNumber}
+                      <a href={`tel:${restaurant?.phoneNumber}`}>{restaurant?.phoneNumber}</a>
                     </ThinMarginParagraph>
                     <ThinMarginParagraph>
                       <MarginIcon icon={faLink} />

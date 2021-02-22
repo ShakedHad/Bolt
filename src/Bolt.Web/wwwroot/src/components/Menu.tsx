@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import {
-  Card, Col, Collapse, Row, Space, Typography,
+  Card, Col, Collapse, Result, Row, Space, Typography,
 } from 'antd';
 import _ from 'lodash';
 import React, { FC, Fragment } from 'react';
@@ -18,9 +18,19 @@ const Menu: FC<MenuProps> = ({ restaurant }) => {
   const { menu } = restaurant;
   return (
     <>
-      <Space direction="vertical">
-        <Collapse defaultActiveKey={[..._.range(menu.categories.length)]} ghost>
-          {
+      {
+      !menu
+        ? (
+          <Result status="warning" title={'It\'s looks like we\'re having problems with these restaurant\'s menu'} extra="Come back shortly" />
+          // <>
+          //   <Title level={2}>{'It\'s looks like we\'re having problems with these restaurant\'s menu'}</Title>
+          //   <Title level={4}>Come back shortly</Title>
+          // </>
+        )
+        : (
+          <Space direction="vertical">
+            <Collapse defaultActiveKey={[..._.range(menu.categories.length)]} ghost>
+              {
           menu.categories.map((category, index) => (
             <Fragment key={category.id.toString()}>
               <Panel
@@ -58,8 +68,10 @@ const Menu: FC<MenuProps> = ({ restaurant }) => {
             </Fragment>
           ))
         }
-        </Collapse>
-      </Space>
+            </Collapse>
+          </Space>
+        )
+}
     </>
   );
 };
