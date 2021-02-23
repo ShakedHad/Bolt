@@ -1,7 +1,13 @@
 import { BaseEntity } from './BaseEntity';
 
 export class User extends BaseEntity {
-  firstName: String = '';
+  firstName: string = '';
 
-  lastName: String = '';
+  lastName: string = '';
+
+  googleId: string = '';
+
+  email: string = '';
+
+  imageUrl: string = '';
 }

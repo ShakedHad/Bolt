@@ -14,8 +14,10 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import axios from 'axios';
+import { plainToClass } from 'class-transformer';
 import Homepage from './Homepage';
 import Restaurant from './Restaurant';
+import { User } from '../models/User';
 
 const { Header, Content } = Layout;
 
@@ -24,9 +26,12 @@ const Logo = styled.img`
 `;
 
 const App: FC = () => {
-  const onLoginSuccess = (res : GoogleLoginResponse | GoogleLoginResponseOffline) => {
+  const onLoginSuccess = async (res : GoogleLoginResponse | GoogleLoginResponseOffline) => {
     if ('googleId' in res) {
-      axios.post('', { tokenId: res.tokenId });
+      const { data } = await axios.post<User>('/api/Auth/google', { tokenId: res.tokenId });
+      const user = plainToClass(User, data);
+
+      console.log(user);
     }
   };
 

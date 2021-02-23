@@ -5,12 +5,11 @@ using Bolt.Core.Entities;
 
 namespace Bolt.Core.Specifications
 {
-    public class RestaurantWithMenuByIdSpecification : Specification<Restaurant>
+    public class UserByGoogleIdSpecification : Specification<User>
     {
-        public RestaurantWithMenuByIdSpecification(Guid id)
+        public UserByGoogleIdSpecification(string googleId)
         {
-            Query.Where(restaurant => restaurant.Id == id).Include(restaurant => restaurant.Menu)
-                .ThenInclude(menu => menu.Categories).ThenInclude(category => category.Items);
+            Query.Where(user => user.GoogleId == googleId);
         }
     }
 }
