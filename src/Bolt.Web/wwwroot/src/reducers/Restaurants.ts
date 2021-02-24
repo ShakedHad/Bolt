@@ -1,8 +1,7 @@
 import { RestaurantsAction, ActionsTypes, SelectedRestaurantAction } from '../actions';
 import { Restaurant } from '../models/Restaurant';
-import { RestaurantCategory } from '../models/RestaurantCategory';
 
-export const RestaurantReducer = (state: Restaurant[] = [], action: RestaurantsAction) => {
+export const RestaurantsReducer = (state: Restaurant[] = [], action: RestaurantsAction) => {
   switch (action.type) {
     case ActionsTypes.FetchRestaurants:
       return action.payload;
