@@ -8,5 +8,5 @@ export class BaseEntity {
     ),
     { toClassOnly: true },
   )
-  id: Guid = Guid.create();
+  id: Guid = Guid.createEmpty();
 }

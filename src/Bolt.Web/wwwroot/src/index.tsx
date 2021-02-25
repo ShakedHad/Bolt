@@ -4,8 +4,11 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
+import dotenv from 'dotenv';
 import App from './components/App';
 import { reducers } from './reducers';
+
+dotenv.config({ path: '/.env' });
 
 declare global {
   interface Window {

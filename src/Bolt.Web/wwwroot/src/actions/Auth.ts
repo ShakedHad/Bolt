@@ -23,7 +23,7 @@ export const UserLogin = (tokenId: string) => async (dispatch: Dispatch) => {
   });
 };
 
-export const UserLogged = () => {
+export const UserLogout = () => {
   return {
     type: ActionsTypes.UserLogout,
   };
